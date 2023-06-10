@@ -20,16 +20,22 @@ class _myHomePageState extends State<myHomePage> {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.black,
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Image.asset(
-            "asset/image/home.png",
-            fit: BoxFit.contain,
-            height: 32.0,
-            width: 32.0,
+        title: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "asset/image/home.png",
+                fit: BoxFit.contain,
+                height: 32.0,
+                width: 32.0,
+              ),
+              SizedBox(width: 10.0),
+              Text("Home List"),
+            ],
           ),
-          SizedBox(width: 10.0),
-          Text("Home Page")
-        ]),
+        ),
       ),
       body: FutureBuilder(
         future: getPost(),
@@ -44,24 +50,39 @@ class _myHomePageState extends State<myHomePage> {
                 itemCount: product.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
-                    child: ListTile(
-                      onTap: () {},
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          product[index].avatar,
-                          fit: BoxFit.cover,
-                          height: 45.0,
-                          width: 45.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: [Colors.red, Colors.amber])),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {},
+                              child: ListTile(
+                                onTap: () {},
+                                leading: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: Image.network(
+                                    product[index].avatar,
+                                    fit: BoxFit.cover,
+                                    height: 45.0,
+                                    width: 45.0,
+                                  ),
+                                ),
+                                title: Text(product[index].firstName +
+                                    " " +
+                                    product[index].lastName),
+                                subtitle: Text(product[index].email),
+                                trailing: Icon(Icons.lock),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      title: Text(product[index].firstName +
-                          " " +
-                          product[index].lastName),
-                      subtitle: Text(product[index].email),
-                      trailing: Icon(Icons.edit),
-                    ),
-                  );
+                      ));
                 },
               ),
             );

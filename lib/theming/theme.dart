@@ -11,10 +11,10 @@ class MyTheme {
           iconTheme: IconThemeData(color: Colors.white)),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              foregroundColor: MaterialStateProperty.all(Colors.white),
-              shape: MaterialStateProperty.all(StadiumBorder()),
-              padding: MaterialStateProperty.all(
+              backgroundColor: WidgetStateProperty.all(Colors.black),
+              foregroundColor: WidgetStateProperty.all(Colors.white),
+              shape: WidgetStateProperty.all(StadiumBorder()),
+              padding: WidgetStateProperty.all(
                   EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0)))),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
